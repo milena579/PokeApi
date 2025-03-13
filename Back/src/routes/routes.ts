@@ -1,12 +1,10 @@
 import { Express } from 'express';
 import express from 'express'
-import task from './task.ts'
-import auth from './auth.ts';
+import pokedex from '../routes/pokedex.ts'
 
 export default function (app: Express) {
     app
     .use(express.json())
-    .use('/api/task', task)
-    .use('/api/auth', auth)
+    .use('/pokedex', pokedex)
 }
 
