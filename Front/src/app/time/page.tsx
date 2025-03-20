@@ -1,8 +1,8 @@
 "use client"
 import { Menu } from "@/components/Menu";
-import {CardAPI, Pokemon} from "../components/CardAPI"
+import {Card, Pokemon} from "../../components/Card"
 import { useState, useEffect  } from "react";
-import {api} from "./constants/api"
+import {api} from "../constants/api"
 import Image from "next/image";
 
 import letreiro  from "../../public/letreiro.png"
@@ -28,8 +28,8 @@ export default function Home() {
     }, [page])
   return(
     <>
-    <Menu op1="Capturar Pokemons" op2="Meu Time"></Menu>
     <div className="flex flex-col gap-6 w-full h-full p-8 items-center">
+      <Menu op1={"0"} op2={""}></Menu>
       <div className="w-[500px]">
           <Image src={letreiro} alt="imagem" className="" />
       </div>
@@ -41,7 +41,7 @@ export default function Home() {
       <div className="flex gap-6 flex-wrap p-8 items-center justify-center">
         {cardsData.map((item, index) => {
           return (
-                <CardAPI
+                <Card
                   key={index}
                   id={item.id}
                   name={item.name}
