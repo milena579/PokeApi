@@ -1,7 +1,18 @@
-import type { NextConfig } from "next";
+const nextConfig = {
+  rewrites: () => {
+      return [
+          {
+              source: "/",
+              destination: "/",
 
-const nextConfig: NextConfig = {
-  /* config options here */
+          },
+          {
+              source: "/meuTime",
+              destination: "/time",
+
+          },
+      ]
+  },
 };
 
 export default nextConfig;

@@ -5,7 +5,7 @@ import { useState, useEffect  } from "react";
 import {api} from "../constants/api"
 import Image from "next/image";
 
-import letreiro  from "../../public/letreiro.png"
+// import pokebola  from "../../../public/pokebola.png";
 
 export default function Home() {
   const [cardsData, setCardsData] =  useState<Pokemon[]>([]);
@@ -28,16 +28,8 @@ export default function Home() {
     }, [page])
   return(
     <>
+    <Menu op1={"Capturar Pokemons"} op2={"Meu Time"}></Menu>
     <div className="flex flex-col gap-6 w-full h-full p-8 items-center">
-      <Menu op1={"0"} op2={""}></Menu>
-      <div className="w-[500px]">
-          <Image src={letreiro} alt="imagem" className="" />
-      </div>
-      <div>
-        <div>
-          <input type="text" placeholder="Pagina" className="p-2 border-solid border-2  border-red-400 rounded"/>
-        </div>
-      </div>
       <div className="flex gap-6 flex-wrap p-8 items-center justify-center">
         {cardsData.map((item, index) => {
           return (

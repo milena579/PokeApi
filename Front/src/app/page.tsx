@@ -14,6 +14,7 @@ export default function Home() {
   const [page, setPage] = useState<string>("")
 
   useEffect(() =>{
+    setCardsData([]);
      api.get(`pokemon?limit=10&offset=${page}`).then((res) => {
         res.data.results.forEach((pokemon: { url: string; name : string;}) => {
           api.get(pokemon.url.replace('https://pokeapi.co/api/v2/', ''))
@@ -25,6 +26,11 @@ export default function Home() {
           })
         });
       })
+
+      .then(() => {
+        cardsData.sort;
+      })
+
     }, [page])
   return(
     <>
@@ -35,7 +41,7 @@ export default function Home() {
       </div>
       <div>
         <div>
-          <input type="text" placeholder="Pagina" className="p-2 border-solid border-2  border-red-400 rounded"/>
+          <input className="w-80 h-12 p-4 border rounded-3xl outline-yellow-500 " type="text" value={page} placeholder="Digite a página..." onChange={(e) => setPage(e.target.value)} />
         </div>
       </div>
       <div className="flex gap-6 flex-wrap p-8 items-center justify-center">

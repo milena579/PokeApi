@@ -1,3 +1,6 @@
+"use client";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export interface Pokemon{
     id: string,
@@ -6,6 +9,19 @@ export interface Pokemon{
 }
 
 export const CardAPI =  (props : Pokemon) => {
+
+    const [message, setMessage] = useState<string>("");
+
+    const capturePokemon = async () => {
+        try {
+            const response = await axios.post(`http://localhost:8080/api/capture/${pokemon.id}`);
+            setMessage(`Pokémon ${response.data.pokemon.name} capturado com sucesso!`);
+            window.location.reload();
+        } catch (error: any) {
+            setMessage(error.response?.data?.message || "Erro ao capturar Pokémon!");
+        }
+    }
+
     return(
         <>
             <div className="flex flex-wrap bg-red-700 w-[300px] h-[400px] rounded-2xl items-center justify-center p-2 shadow-lg shadow-blue-300/100">
